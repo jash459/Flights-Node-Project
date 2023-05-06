@@ -1,9 +1,13 @@
-const express = require('express');
+const express = require('express')
 
-const { InfoController } = require('../../controllers');
+const { InfoController } = require('../../controllers')
 
-const router = express.Router();
+const airplaneRoutes = require('./airplane-routes')
 
-router.get('/info', InfoController.info);
+const router = express.Router()
+console.log('inside v1 routes')
+router.use('/airplanes', airplaneRoutes)
 
-module.exports = router;
+router.get('/info', InfoController.info)
+
+module.exports = router
