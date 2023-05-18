@@ -22,7 +22,7 @@ const { SuccessResponse, ErrorResponse } = require('../utils/common')
  */
 async function createFlight(req, res) {
   try {
-    console.log('inside controller')
+    // console.log('inside controller')
     const flight = await FlightService.createFlight({
         flightNumber: req.body.flightNumber,
         airplaneId: req.body.airplaneId,
@@ -44,4 +44,15 @@ async function createFlight(req, res) {
 
 
 
-module.exports = { createFlight }
+async function getAllFlights(req, res){
+  try {
+    const flights= await FlightService.getAllFlights(req.query)
+    SuccessResponse.data = flights
+    return res.status(StatusCodes.CREATED).json(SuccessResponse)
+  } catch (error) {
+    ErrorResponse.error = error
+    return res.status(error.statusCode).json(ErrorResponse)
+  }
+}
+
+module.exports = { createFlight, getAllFlights }
