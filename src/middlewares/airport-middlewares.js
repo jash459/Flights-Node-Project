@@ -13,13 +13,13 @@ function validateCreateRequest(req, res, next){
     if(!req.body.code){
         ErrorResponse.message='something went wrong while creating a airport';
         
-        ErrorResponse.error=new AppError(['Airport code found in the incoming request in the correct form'],StatusCodes.BAD_REQUEST)
+        ErrorResponse.error=new AppError(['Airport code not found in the incoming request in the correct form'],StatusCodes.BAD_REQUEST)
         return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
     }
     if(!req.body.cityId){
         ErrorResponse.message='something went wrong while creating a airport';
         
-        ErrorResponse.error=new AppError(['Airport cityId found in the incoming request in the correct form'],StatusCodes.BAD_REQUEST)
+        ErrorResponse.error=new AppError(['Airport cityId not found in the incoming request in the correct form'],StatusCodes.BAD_REQUEST)
         return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
     }
     next();
