@@ -18,5 +18,11 @@ router.get(
     FlightController.getAllFlights,
   )
   
+// api/v1/Flights/:id -->GET request
+router.get(
+  '/:id',
+  FlightController.getFlight,
+)
+
 
 module.exports = router
